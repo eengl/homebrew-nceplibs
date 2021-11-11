@@ -9,7 +9,7 @@ Currently supported libraries *(as of 11/10/2021)*:
 * [ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
 * [sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
 
-# Install
+# Install into Homebrew
 ```
 brew tap eengl/nceplibs
 ```
