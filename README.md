@@ -3,6 +3,7 @@
 
 Currently supported libraries *(as of 11/10/2021)*:
 * [bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio)
+* [bufr](https://github.com/NOAA-EMC/NCEPLIBS-bufr)
 * [g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
 * [sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
 
