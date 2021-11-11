@@ -6,6 +6,7 @@ Currently supported libraries *(as of 11/10/2021)*:
 * [bufr](https://github.com/NOAA-EMC/NCEPLIBS-bufr)
 * [g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
 * [g2c](https://github.com/NOAA-EMC/NCEPLIBS-g2c)
+* [ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
 * [sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
 
 # Install
