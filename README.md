@@ -17,3 +17,9 @@ Currently supported libraries *(as of 11/16/2021)*:
 brew tap eengl/nceplibs
 ```
 The above command uses shortened syntax since the tap is hosted on GitHub and the repository name is prefixed with "homebrew-".  See Homebrew Tap [documentation](https://docs.brew.sh/Taps) for full syntax.
+
+Each component of NCEPLIBS can be installed with the following command structure:
+```
+brew install nceplibs-<NAME>
+```
+where `<NAME>` is one of the above listed libraries.
