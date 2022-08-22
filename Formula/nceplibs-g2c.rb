@@ -1,8 +1,8 @@
 class NceplibsG2c < Formula
   desc "This library contains C decoder/encoder routines for GRIB edition 2."
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-g2c"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v1.6.4.tar.gz"
-  sha256 "5129a772572a358296b05fbe846bd390c6a501254588c6a223623649aefacb9d"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v1.7.0.tar.gz"
+  sha256 "73afba9da382fed73ed8692d77fa037bb313280879cd4012a5e5697dccf55175"
   license :public_domain
   
   depends_on "cmake" => :build
@@ -12,7 +12,10 @@ class NceplibsG2c < Formula
   depends_on "zlib"
 
   def install
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", ".", "-DCMAKE_PREFIX_PATH=#{prefix}"
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", ".", "-DUSE_PNG=ON", "-DUSE_Jasper=ON", "-DBUILD_SHARED_LIBS=ON", "-DCMAKE_PREFIX_PATH=#{prefix}"
+    system "make"
+    system "make", "install"
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", ".", "-DUSE_PNG=ON", "-DUSE_Jasper=ON", "-DBUILD_SHARED_LIBS=OFF", "-DCMAKE_PREFIX_PATH=#{prefix}"
     system "make"
     system "make", "install"
   end
