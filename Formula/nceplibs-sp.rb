@@ -9,12 +9,10 @@ class NceplibsSp < Formula
   depends_on "gcc" => :build
 
   def install
-    system "mkdir", "build"
-    system "cd", "build"
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", ".."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "."
     system "make"
     system "make", "install"
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", ".."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", "."
     system "make"
     system "make", "install"
     
