@@ -1,8 +1,8 @@
 class NceplibsBacio < Formula
   desc "This library performs binary I/O for the NCEP models."
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-bacio"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-bacio/archive/refs/tags/v2.5.0.tar.gz"
-  sha256 "540a0ed73941d70dbf5d7b21d5d0a441e76fad2bfe37dfdfea0db3e98fc0fbfb"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-bacio/archive/refs/tags/v2.6.0.tar.gz"
+  sha256 "03fef581e1bd3710fb8d2f2659a6c3e01a0437c1350ba53958d2ff1ffef47bcb"
   license :public_domain
 
   depends_on "cmake" => :build
@@ -10,6 +10,9 @@ class NceplibsBacio < Formula
 
   def install
     system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "."
+    system "make"
+    system "make", "install"
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", ".", "-DBUILD_SHARED_LIBS=ON"
     system "make"
     system "make", "install"
   end
