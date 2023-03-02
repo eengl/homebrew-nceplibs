@@ -1,8 +1,8 @@
 class NceplibsBufr < Formula
   desc "Fortran library, programs, and command line utilites for working with the BUFR format"
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-bufr"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-bufr/archive/refs/tags/bufr_v11.7.0.tar.gz"
-  sha256 "6a76ae8e7682bbc790321bf80c2f9417775c5b01a5c4f10763df92e01b20b9ca"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-bufr/archive/refs/tags/bufr_v11.7.1.tar.gz"
+  sha256 "6533ce6eaa6b02c0cb5424cfbc086ab120ccebac3894980a4daafd4dfadd71f8"
   license :public_domain
 
   depends_on "cmake" => :build
