@@ -7,9 +7,10 @@ class NceplibsIp < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
+  depends_on "nceplibs-sp"
 
   def install
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", ".", "-DCMAKE_PREFIX_PATH=#{prefix}"
     system "make"
     system "make", "install"
   end
