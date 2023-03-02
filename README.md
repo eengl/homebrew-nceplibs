@@ -7,10 +7,8 @@ Currently supported libraries *(as of 11/16/2021)*:
 * [g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
 * [g2c](https://github.com/NOAA-EMC/NCEPLIBS-g2c)
 * [ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
-* [ip2](https://github.com/NOAA-EMC/NCEPLIBS-ip2)
 * [sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
 * [w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc)
-* [wgrib2](https://github.com/NOAA-EMC/NCEPLIBS-wgrib2)
 
 # Install into Homebrew
 ```
