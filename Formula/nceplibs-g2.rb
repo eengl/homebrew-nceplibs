@@ -7,6 +7,7 @@ class NceplibsG2 < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
+  depends_on "pkg-config" => :build
   depends_on "jasper"
   depends_on "libpng"
   depends_on "nceplibs-bacio"

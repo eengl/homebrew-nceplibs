@@ -7,6 +7,7 @@ class NceplibsBacio < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
+  depends_on "pkg-config" => :build
 
   def install
     system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "."

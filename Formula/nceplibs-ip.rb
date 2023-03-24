@@ -7,6 +7,7 @@ class NceplibsIp < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
+  depends_on "pkg-config" => :build
   depends_on "nceplibs-sp"
 
   def install
