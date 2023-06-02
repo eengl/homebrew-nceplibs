@@ -2,7 +2,7 @@ class NceplibsSp < Formula
   desc "NCEP Spectral Transform library"
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-sp"
   url "https://github.com/NOAA-EMC/NCEPLIBS-sp/archive/refs/tags/v2.4.0.tar.gz"
-  sha256 "dbb4280e622d2683b68a28f8e3837744adf9bbbb1e7940856e8f4597f481c708"
+  sha256 "5528eba5759e538a146c9cf801bbe7f5d34fd283fca91b63197119a128a638f5"
   license :public_domain
 
   depends_on "cmake" => :build
