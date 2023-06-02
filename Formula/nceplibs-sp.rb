@@ -10,10 +10,10 @@ class NceplibsSp < Formula
   depends_on "pkg-config" => :build
 
   def install
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "-DBUILD_8=ON", "."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "."
     system "make"
     system "make", "install"
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", "-DBUILD_8=ON", "."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", "."
     system "make"
     system "make", "install"
     
