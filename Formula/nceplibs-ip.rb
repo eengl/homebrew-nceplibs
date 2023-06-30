@@ -17,10 +17,6 @@ class NceplibsIp < Formula
     system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", "."
     system "make"
     system "make", "install"
-    system "mkdir", "#{HOMEBREW_PREFIX}/include_4"
-    system "ln", "-s", "#{prefix}/include_4/*", "#{HOMEBREW_PREFIX}/include_4/."
-    system "mkdir", "#{HOMEBREW_PREFIX}/include_8"
-    system "ln", "-s", "#{prefix}/include_8/*", "#{HOMEBREW_PREFIX}/include_8/."
   end
 
   test do
