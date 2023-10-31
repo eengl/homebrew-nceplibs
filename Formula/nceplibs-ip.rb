@@ -1,8 +1,8 @@
 class NceplibsIp < Formula
   desc "NCEP General Interpolation Fortran Library"
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-ip"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-ip/archive/refs/tags/v4.1.0.tar.gz"
-  sha256 "b83ca037d9a5ad3eb0fb1acfe665c38b51e01f6bd73ce9fb8bb2a14f5f63cdbe"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-ip/archive/refs/tags/v4.4.0.tar.gz"
+  sha256 "858d9201ce0bc4d16b83581ef94a4a0262f498ed1ea1b0535de2e575da7a8b8c"
   license :public_domain
 
   depends_on "cmake" => :build
