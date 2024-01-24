@@ -1,8 +1,8 @@
 class NceplibsW3emc < Formula
   desc "This library contains Fortran 90 decoder/encoder routines for GRIB Edition 1."
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-w3emc"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-w3emc/archive/refs/tags/v2.9.3.tar.gz"
-  sha256 "9ca1b08dd13dfbad4a955257ae0cf38d2e300ccd8d983606212bc982370a29bc"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-w3emc/archive/refs/tags/v2.11.0.tar.gz"
+  sha256 "53a03d03421c5da699b026ca220512ed494a531b83284693f66d2579d570c43b"
   license :public_domain
 
   depends_on "cmake" => :build
