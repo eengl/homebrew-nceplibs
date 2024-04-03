@@ -1,8 +1,8 @@
 class NceplibsG2c < Formula
   desc "This library contains C decoder/encoder routines for GRIB edition 2."
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-g2c"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v1.8.0.tar.gz"
-  sha256 "4ce9f5a7cb0950699fe08ebc5a463ab4d09ef550c050391a319308a2494f971f"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v1.9.0.tar.gz"
+  sha256 "5554276e18bdcddf387a08c2dd23f9da310c6598905df6a2a244516c22ded9aa"
   license :public_domain
   
   depends_on "cmake" => :build
