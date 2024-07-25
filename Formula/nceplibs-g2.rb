@@ -1,8 +1,8 @@
 class NceplibsG2 < Formula
   desc "Fortran library for encoding/decoding GRIB2 messages."
   homepage "https://github.com/NOAA-EMC/NCEPLIBS-g2"
-  url "https://github.com/NOAA-EMC/NCEPLIBS-g2/archive/refs/tags/v3.4.9.tar.gz"
-  sha256 "6edc33091f6bd2acb191182831499c226a1c3992c3acc104d6363528b12dfbae"
+  url "https://github.com/NOAA-EMC/NCEPLIBS-g2/archive/refs/tags/v3.5.1.tar.gz"
+  sha256 "a9acdb5d23eca532838f21c4a917727ac85851fc9e1f100d65a6f27c1a563998"
   license :public_domain
 
   depends_on "cmake" => :build
