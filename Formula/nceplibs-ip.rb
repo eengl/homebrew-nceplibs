@@ -8,12 +8,13 @@ class NceplibsIp < Formula
   depends_on "cmake" => :build
   depends_on "gcc" => :build
   depends_on "pkg-config" => :build
+  depends_on "openblas"
 
   def install
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "-DBLA_VENDOR=OpenBLAS", "."
     system "make"
     system "make", "install"
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "-DBUILD_SHARED_LIBS=ON", "."
+    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "-DBLA_VENDOR=OpenBLAS", "-DBUILD_SHARED_LIBS=ON", "."
     system "make"
     system "make", "install"
   end
