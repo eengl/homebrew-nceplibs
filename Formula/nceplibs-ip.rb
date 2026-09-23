@@ -27,11 +27,19 @@ class NceplibsIp < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    # Symlink include_4 and include_d into prefix/include
-    # This allows CMake's exported ip-targets.cmake to find prefix/include_d
-    # while letting Homebrew expose /opt/homebrew/include/include_d
-    include.install_symlink prefix/"include_4" => "include_4"
-    include.install_symlink prefix/"include_d" => "include_d"
+    # Copy files into prefix/include/include_* so Homebrew creates actual merged directories
+    # in /opt/homebrew/include/ rather than exclusive top-level directory symlinks.
+    if (prefix/"include_4").exist?
+      (include/"include_4").install Dir[prefix/"include_4/*"]
+      rm_r prefix/"include_4"
+      (prefix/"include_4").make_symlink include/"include_4"
+    end
+
+    if (prefix/"include_d").exist?
+      (include/"include_d").install Dir[prefix/"include_d/*"]
+      rm_r prefix/"include_d"
+      (prefix/"include_d").make_symlink include/"include_d"
+    end
   end
 
   test do
