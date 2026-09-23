@@ -28,6 +28,11 @@ class NceplibsIp < Formula
     system "cmake", "-S", ".", "-B", "build_shared", *args, "-DBUILD_SHARED_LIBS=ON"
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
+
+    # Link include_4 and include_d into Homebrew's top-level /opt/homebrew/ directory
+    # (or /usr/local/ on x86 Macs)
+    HOMEBREW_PREFIX.install_symlink prefix/"include_4" => "include_4"
+    HOMEBREW_PREFIX.install_symlink prefix/"include_d" => "include_d"
   end
 
   test do
