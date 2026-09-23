@@ -25,11 +25,8 @@ class NceplibsWgrib2 < Formula
     ENV["CC"] = gcc_bin
     ENV["FC"] = gfortran_bin
 
-    ip_prefix = Formula["nceplibs-ip"].opt_prefix
-
     args = std_cmake_args + [
-      "-DCMAKE_PREFIX_PATH=#{ip_prefix};#{Formula["openblas"].opt_prefix}",
-      "-DCMAKE_INCLUDE_PATH=#{ip_prefix}/include/include_d;#{ip_prefix}/include/include_4",
+      "-DCMAKE_PREFIX_PATH=#{Formula["nceplibs-ip"].opt_prefix};#{Formula["openblas"].opt_prefix}",
       "-DUSE_AEC=ON",
       "-DUSE_IPOLATES=ON",
       "-DUSE_NETCDF=ON",
