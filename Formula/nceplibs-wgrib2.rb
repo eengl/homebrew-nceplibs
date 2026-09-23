@@ -27,16 +27,16 @@ class NceplibsWgrib2 < Formula
 
     ip_prefix = Formula["nceplibs-ip"].opt_prefix
 
-    args = std_cmake_args + %W[
-      -DCMAKE_PREFIX_PATH=#{ip_prefix};#{Formula["openblas"].opt_prefix}
-      -DCMAKE_INCLUDE_PATH=#{ip_prefix}/include/include_d;#{ip_prefix}/include/include_4
-      -DUSE_AEC=ON
-      -DUSE_IPOLATES=ON
-      -DUSE_NETCDF=ON
-      -DUSE_OPENMP=ON
-      -DBUILD_LIB=OFF
-      -DBUILD_SHARED_LIB=OFF
-      -DBUILD_WGRIB=ON
+    args = std_cmake_args + [
+      "-DCMAKE_PREFIX_PATH=#{ip_prefix};#{Formula["openblas"].opt_prefix}",
+      "-DCMAKE_INCLUDE_PATH=#{ip_prefix}/include/include_d;#{ip_prefix}/include/include_4",
+      "-DUSE_AEC=ON",
+      "-DUSE_IPOLATES=ON",
+      "-DUSE_NETCDF=ON",
+      "-DUSE_OPENMP=ON",
+      "-DBUILD_LIB=OFF",
+      "-DBUILD_SHARED_LIB=OFF",
+      "-DBUILD_WGRIB=ON",
     ]
 
     system "cmake", "-S", ".", "-B", "build", *args
