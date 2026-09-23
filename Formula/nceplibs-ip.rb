@@ -11,12 +11,23 @@ class NceplibsIp < Formula
   depends_on "openblas"
 
   def install
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "-DBLA_VENDOR=OpenBLAS", "."
-    system "make"
-    system "make", "install"
-    system "cmake", "-DCMAKE_INSTALL_PREFIX=#{prefix}", "-DCMAKE_PREFIX_PATH=#{prefix}", "-DBUILD_TESTING=OFF", "-DOPENMP=ON", "-DBLA_VENDOR=OpenBLAS", "-DBUILD_SHARED_LIBS=ON", "."
-    system "make"
-    system "make", "install"
+    args = std_cmake_args + %W[
+      -DBUILD_4=ON
+      -DBUILD_D=ON
+      -DBUILD_TESTING=OFF
+      -DOPENMP=ON
+      -DBLA_VENDOR=OpenBLAS
+    ]
+
+    # Build static libraries
+    system "cmake", "-S", ".", "-B", "build_static", *args, "-DBUILD_SHARED_LIBS=OFF"
+    system "cmake", "--build", "build_static"
+    system "cmake", "--install", "build_static"
+
+    # Build shared libraries
+    system "cmake", "-S", ".", "-B", "build_shared", *args, "-DBUILD_SHARED_LIBS=ON"
+    system "cmake", "--build", "build_shared"
+    system "cmake", "--install", "build_shared"
   end
 
   test do

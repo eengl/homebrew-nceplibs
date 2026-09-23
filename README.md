@@ -1,7 +1,7 @@
 # homebrew-nceplibs
 [Homebrew](https://brew.sh) Tap for the NOAA/NCEP/EMC [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) suite of libraries.
 
-Currently supported libraries *(as of 6/6/2025)*:
+Currently supported libraries *(as of 9/23/2026)*:
 * [bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio)
 * [bufr](https://github.com/NOAA-EMC/NCEPLIBS-bufr)
 * [g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
