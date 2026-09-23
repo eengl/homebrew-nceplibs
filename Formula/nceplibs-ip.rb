@@ -12,8 +12,7 @@ class NceplibsIp < Formula
 
   def install
     args = std_cmake_args + %W[
-      -DBUILD_4=ON
-      -DBUILD_D=ON
+      -DCMAKE_INSTALL_INCLUDEDIR=include
       -DBUILD_TESTING=OFF
       -DOPENMP=ON
       -DBLA_VENDOR=OpenBLAS
@@ -29,13 +28,28 @@ class NceplibsIp < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    # Link include_4 and include_d into Homebrew's top-level /opt/homebrew/ directory
-    # (or /usr/local/ on x86 Macs)
-    HOMEBREW_PREFIX.install_symlink prefix/"include_4" => "include_4"
-    HOMEBREW_PREFIX.install_symlink prefix/"include_d" => "include_d"
+    # Move include_4 and include_d inside prefix/include so Homebrew automatically
+    # symlinks them into /opt/homebrew/include/ (or /usr/local/include on x86)
+    if (prefix/"include_4").exist?
+      (include/"include_4").install Dir[prefix/"include_4/*"]
+      rm_r prefix/"include_4"
+    end
+
+    if (prefix/"include_d").exist?
+      (include/"include_d").install Dir[prefix/"include_d/*"]
+      rm_r prefix/"include_d"
+    end
   end
 
   test do
-    system "false"
+    (testpath/"test.f90").write <<~EOS
+      program test
+        use ip_mod
+        implicit none
+        print *, 'NCEPLIBS-ip link test successful.'
+      end program test
+    EOS
+    system "gfortran", "-I#{include}/include_4", "test.f90", "-L#{lib}", "-lip_4", "-o", "test"
+    system "./test"
   end
 end
