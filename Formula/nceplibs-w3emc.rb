@@ -26,16 +26,23 @@ class NceplibsW3emc < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    # Symlink precision-specific include directories into prefix/include
-    # so Homebrew exposes them while keeping CMake export target paths happy
+    # Copy files into prefix/include/include_* so Homebrew creates actual merged directories
     if (prefix/"include_4").exist?
-      include.install_symlink prefix/"include_4" => "include_4"
+      (include/"include_4").install Dir[prefix/"include_4/*"]
+      rm_r prefix/"include_4"
+      (prefix/"include_4").make_symlink include/"include_4"
     end
+
     if (prefix/"include_8").exist?
-      include.install_symlink prefix/"include_8" => "include_8"
+      (include/"include_8").install Dir[prefix/"include_8/*"]
+      rm_r prefix/"include_8"
+      (prefix/"include_8").make_symlink include/"include_8"
     end
+
     if (prefix/"include_d").exist?
-      include.install_symlink prefix/"include_d" => "include_d"
+      (include/"include_d").install Dir[prefix/"include_d/*"]
+      rm_r prefix/"include_d"
+      (prefix/"include_d").make_symlink include/"include_d"
     end
   end
 
