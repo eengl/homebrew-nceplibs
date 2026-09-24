@@ -12,6 +12,7 @@ class NceplibsIp < Formula
 
   def install
     args = std_cmake_args + %W[
+      -DCMAKE_INSTALL_INCLUDEDIR=include
       -DBUILD_TESTING=OFF
       -DOPENMP=ON
       -DBLA_VENDOR=OpenBLAS
@@ -27,16 +28,16 @@ class NceplibsIp < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    # Copy files into prefix/include/include_* so Homebrew creates actual merged directories
-    # in /opt/homebrew/include/ rather than exclusive top-level directory symlinks.
     if (prefix/"include_4").exist?
-      (include/"include_4").install Dir[prefix/"include_4/*"]
+      mkdir_p include/"include_4"
+      cp_r Dir[prefix/"include_4/*"], include/"include_4/"
       rm_r prefix/"include_4"
       (prefix/"include_4").make_symlink include/"include_4"
     end
 
     if (prefix/"include_d").exist?
-      (include/"include_d").install Dir[prefix/"include_d/*"]
+      mkdir_p include/"include_d"
+      cp_r Dir[prefix/"include_d/*"], include/"include_d/"
       rm_r prefix/"include_d"
       (prefix/"include_d").make_symlink include/"include_d"
     end
