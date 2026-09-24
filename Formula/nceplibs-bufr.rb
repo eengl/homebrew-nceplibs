@@ -7,6 +7,7 @@ class NceplibsBufr < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
+  depends_on "meson" => :build
   depends_on "pkg-config" => :build
   depends_on "numpy"
   depends_on "python3"
