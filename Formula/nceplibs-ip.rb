@@ -12,6 +12,7 @@ class NceplibsIp < Formula
 
   def install
     args = std_cmake_args + %W[
+      -DCMAKE_INSTALL_INCLUDEDIR=include
       -DBUILD_TESTING=OFF
       -DOPENMP=ON
       -DBLA_VENDOR=OpenBLAS
@@ -31,7 +32,7 @@ class NceplibsIp < Formula
       next unless (prefix/inc_dir).exist?
 
       (include/inc_dir).mkpath
-      (include/inc_dir).install Dir[prefix/"#{inc_dir}/*"]
+      cp_r Dir[prefix/"#{inc_dir}/*"], include/inc_dir
       rm_r(prefix/inc_dir)
       (prefix/inc_dir).make_symlink(include/inc_dir)
     end
