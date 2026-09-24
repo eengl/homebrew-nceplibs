@@ -7,18 +7,24 @@ class NceplibsBufr < Formula
 
   depends_on "cmake" => :build
   depends_on "gcc" => :build
-  depends_on "meson" => :build
+  #depends_on "meson" => :build
   depends_on "pkg-config" => :build
-  depends_on "numpy"
-  depends_on "python3"
+  #depends_on "numpy"
+  #depends_on "python3"
 
   def install
     python3_bin = Formula["python3"].opt_bin/"python3"
 
+   # args = std_cmake_args + %W[
+   #   -DMASTER_TABLE_DIR=#{pkgshare}/bufr
+   #   -DENABLE_PYTHON=ON
+   #   -DPython3_EXECUTABLE=#{python3_bin}
+   #   -DBUILD_TESTING=OFF
+   # ]
+
     args = std_cmake_args + %W[
       -DMASTER_TABLE_DIR=#{pkgshare}/bufr
-      -DENABLE_PYTHON=ON
-      -DPython3_EXECUTABLE=#{python3_bin}
+      -DENABLE_PYTHON=OFF
       -DBUILD_TESTING=OFF
     ]
 
