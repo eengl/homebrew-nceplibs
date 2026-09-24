@@ -13,7 +13,6 @@ class NceplibsW3emc < Formula
   def install
     args = std_cmake_args + %W[
       -DCMAKE_PREFIX_PATH=#{Formula["nceplibs-bacio"].opt_prefix}
-      -DCMAKE_INSTALL_INCLUDEDIR=include
       -DBUILD_TESTING=OFF
     ]
 
@@ -27,27 +26,16 @@ class NceplibsW3emc < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    # If w3emc created top-level include_4/include_d dirs outside of include/, 
-    # move them into include/ so that Homebrew links them as subdirectories.
-    if (prefix/"include_4").exist?
-      mkdir_p include/"include_4"
-      cp_r Dir[prefix/"include_4/*"], include/"include_4/"
-      rm_r prefix/"include_4"
-      (prefix/"include_4").make_symlink include/"include_4"
-    end
+    # Move headers into prefix/include/include_* so Homebrew creates shared merged directories 
+    # inside /opt/homebrew/include/, and symlink prefix/include_* back to prefix/include/include_*
+    # so w3emc-targets.cmake validations pass.
+    %w[include_4 include_8 include_d].each do |inc_dir|
+      next unless (prefix/inc_dir).exist?
 
-    if (prefix/"include_d").exist?
-      mkdir_p include/"include_d"
-      cp_r Dir[prefix/"include_d/*"], include/"include_d/"
-      rm_r prefix/"include_d"
-      (prefix/"include_d").make_symlink include/"include_d"
-    end
-
-    if (prefix/"include_8").exist?
-      mkdir_p include/"include_8"
-      cp_r Dir[prefix/"include_8/*"], include/"include_8/"
-      rm_r prefix/"include_8"
-      (prefix/"include_8").make_symlink include/"include_8"
+      (include/inc_dir).mkpath
+      (include/inc_dir).install Dir[prefix/"#{inc_dir}/*"]
+      rm_r(prefix/inc_dir)
+      (prefix/inc_dir).make_symlink(include/inc_dir)
     end
   end
 
