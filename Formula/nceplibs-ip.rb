@@ -12,7 +12,6 @@ class NceplibsIp < Formula
 
   def install
     args = std_cmake_args + %W[
-      -DCMAKE_INSTALL_INCLUDEDIR=include
       -DBUILD_TESTING=OFF
       -DOPENMP=ON
       -DBLA_VENDOR=OpenBLAS
@@ -28,18 +27,13 @@ class NceplibsIp < Formula
     system "cmake", "--build", "build_shared"
     system "cmake", "--install", "build_shared"
 
-    if (prefix/"include_4").exist?
-      mkdir_p include/"include_4"
-      cp_r Dir[prefix/"include_4/*"], include/"include_4/"
-      rm_r prefix/"include_4"
-      (prefix/"include_4").make_symlink include/"include_4"
-    end
+    %w[include_4 include_d].each do |inc_dir|
+      next unless (prefix/inc_dir).exist?
 
-    if (prefix/"include_d").exist?
-      mkdir_p include/"include_d"
-      cp_r Dir[prefix/"include_d/*"], include/"include_d/"
-      rm_r prefix/"include_d"
-      (prefix/"include_d").make_symlink include/"include_d"
+      (include/inc_dir).mkpath
+      (include/inc_dir).install Dir[prefix/"#{inc_dir}/*"]
+      rm_r(prefix/inc_dir)
+      (prefix/inc_dir).make_symlink(include/inc_dir)
     end
   end
 
