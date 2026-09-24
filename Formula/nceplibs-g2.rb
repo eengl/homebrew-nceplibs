@@ -12,10 +12,16 @@ class NceplibsG2 < Formula
   depends_on "libpng"
   depends_on "nceplibs-bacio"
   depends_on "nceplibs-g2c"
+  depends_on "nceplibs-ip"
+  depends_on "openblas"
 
   def install
+    openblas_prefix = Formula["openblas"].opt_prefix
+
     args = std_cmake_args + %W[
-      -DCMAKE_PREFIX_PATH=#{Formula["nceplibs-bacio"].opt_prefix};#{Formula["nceplibs-g2c"].opt_prefix};#{Formula["jasper"].opt_prefix};#{Formula["libpng"].opt_prefix}
+      -DCMAKE_PREFIX_PATH=#{Formula["nceplibs-ip"].opt_prefix};#{Formula["nceplibs-bacio"].opt_prefix};#{Formula["nceplibs-g2c"].opt_prefix};#{Formula["jasper"].opt_prefix};#{Formula["libpng"].opt_prefix};#{openblas_prefix}
+      -DBLA_VENDOR=OpenBLAS
+      -DBLAS_DIR=#{openblas_prefix}
       -DBUILD_TESTING=OFF
     ]
 
